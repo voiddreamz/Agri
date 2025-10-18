@@ -4,9 +4,9 @@ project(Agri)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Agri
-        #        A.cpp
+        A.cpp
         #        B.cpp
-        C.cpp
+        #        C.cpp
         #        D.cpp
         #        temple.cpp
 )

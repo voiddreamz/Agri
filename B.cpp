@@ -135,6 +135,26 @@ const int N = 1e9;
 void solve() {
     using namespace std;
     int i = 0, temp = 0; // i for the FOR and temp for temp.
+    int n;
+    cin >> n;
+    char *strings[n];
+    FOR(i, n) { cin >> *strings[i]; }
+    char *lp = strings[0];
+    char *rp = strings[n - 1];
+    vector<char> l_nokori;
+    vector<char> r_nokori;
+    for (; lp < rp;) {
+        if (*lp == *rp) {
+            lp = lp + 1;
+            rp = rp - 1;
+        } else if (*lp == 1) {
+            l_nokori.push_back(*lp);
+            lp = lp + 1;
+        } else if (*rp == 1) {
+            r_nokori.push_back(*lp);
+            rp = rp - 1;
+        }
+    }
 }
 
 int main() {
