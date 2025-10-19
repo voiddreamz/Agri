@@ -139,28 +139,49 @@ void solve() {
     int n = 0;
     int k = 0;
     cin >> n >> k;
+    if (n == 0)
+        cout << 0 << endl;
+
     char str[n];
+    VEC(int) can_be_read(n, 0);
     FOR(i, n) cin >> str[i];
+    if (k == 1 or k == 0) {
+        FOR(i, n) {
+            if (str[i] == '1') {
+                result += 1;
+            }
+        }
+        cout << result << endl;
+    }
     vector<int> include_one_before(n, 0);
     FOR(i, k - 1) {
         if (str[i] == '1') {
             include_one_before[i] = 1;
+            can_be_read[i] = 1;
         }
     }
     FFOR(i, k - 1, n) {
         if (str[i] == '1') {
-            include_one_before[i] += 1;
-            for (int j = i - 1; j >= max(0, i - k + 1); j--) {
-                if (include_one_before[j] == 1) {
+            can_be_read[i] = 1;
+            for (int j = i - 1; j >= i - k + 1; j--) {
+                if (can_be_read[j] == 1) {
                     include_one_before[i] = 1;
                     break;
                 }
             }
         }
     }
-    FOR(i, n) {
+    VEC(int) prot(n, 0);
+    FOR(i, k - 1) {
+        if (str[i] == '1') {
+            result += 1;
+            prot[i] = 1;
+        }
+    }
+    FFOR(i, k - 1, n) {
         if (str[i] == '1' && include_one_before[i] == 0) {
             result += 1;
+            prot[i] = 1;
         }
     }
     cout << result << endl;
