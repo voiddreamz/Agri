@@ -135,6 +135,35 @@ const int N = 1e9;
 void solve() {
     using namespace std;
     int i = 0, temp = 0; // i for the FOR and temp for temp.
+    int result = 0;
+    int n = 0;
+    int k = 0;
+    cin >> n >> k;
+    char str[n];
+    FOR(i, n) cin >> str[i];
+    vector<int> include_one_before(n, 0);
+    FOR(i, k - 1) {
+        if (str[i] == '1') {
+            include_one_before[i] = 1;
+        }
+    }
+    FFOR(i, k - 1, n) {
+        if (str[i] == '1') {
+            include_one_before[i] += 1;
+            for (int j = i - 1; j >= max(0, i - k + 1); j--) {
+                if (include_one_before[j] == 1) {
+                    include_one_before[i] = 1;
+                    break;
+                }
+            }
+        }
+    }
+    FOR(i, n) {
+        if (str[i] == '1' && include_one_before[i] == 0) {
+            result += 1;
+        }
+    }
+    cout << result << endl;
 }
 
 int main() {
