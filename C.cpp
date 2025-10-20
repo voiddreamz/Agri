@@ -135,6 +135,37 @@ const int N = 1e9;
 void solve() {
     using namespace std;
     int i = 0, temp = 0; // i for the FOR and temp for temp.
+    int n, m;
+    int results = 0;
+    cin >> n >> m;
+    VEC(int) a;
+    a.push_back(0);
+    VEC(int) b;
+    b.push_back(0);
+    FOR(i, n) {
+        cin >> temp;
+        a.push_back(temp);
+        cin >> temp;
+        b.push_back(temp);
+    }
+    for (i = 0; i < n; i += 1) {
+        if (b[i] == b[i + 1]) {
+            if ((a[i + 1] - a[i]) % 2 == 1) {
+                results += (a[i + 1] - a[i]) - 1;
+            } else {
+                results += (a[i + 1] - a[i]);
+            }
+        }
+        if (b[i] != b[i + 1]) {
+            if ((a[i + 1] - a[i]) % 2 == 1) {
+                results += (a[i + 1] - a[i]);
+            } else {
+                results += (a[i + 1] - a[i]) - 1;
+            }
+        }
+    }
+    results += m - a[a.size() - 1];
+    cout << results << endl;
 }
 
 int main() {
