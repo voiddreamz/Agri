@@ -132,9 +132,33 @@ const int N = 1e9;
  *
  */
 
+
 void solve() {
     using namespace std;
-    int i = 0, temp = 0; // i for the FOR and temp for temp.
+    int i = 0;
+    char temp = 0; // i for the FOR and temp for temp.
+    int n;
+    cin >> n;
+    char s[n];
+    char t[n];
+    unordered_map<char, int> alphabets;
+
+    FOR(i, n) {
+        cin >> temp;
+        alphabets[temp] += 1;
+        s[i] = temp;
+    }
+    unordered_map<char, int> alphabett;
+    FOR(i, n) {
+        cin >> temp;
+        alphabett[temp] += 1;
+        t[i] = temp;
+    }
+    if (alphabets == alphabett) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
+    }
 }
 
 int main() {

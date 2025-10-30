@@ -1,3 +1,4 @@
+#include <iterator>
 #define FAST_EXECUTION
 // #define INTERACTIVE_MODE
 // #define ONLINE_JUDGE
@@ -135,6 +136,21 @@ const int N = 1e9;
 void solve() {
     using namespace std;
     int i = 0, temp = 0; // i for the FOR and temp for temp.
+    int result = 0;
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    if (a == 0 or b == 0 or c == 0 or d == 0) {
+        cout << "NO" << endl;
+        return;
+    }
+    int sub1 = a - b;
+    int sub2 = a - c;
+    int sub3 = a - d;
+    if (sub1 == 0 and sub2 == 0 and sub3 == 0) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
+    }
 }
 
 int main() {
