@@ -135,6 +135,46 @@ const int N = 1e9;
 void solve() {
     using namespace std;
     int i = 0, temp = 0; // i for the FOR and temp for temp.
+    int n;
+    int result = 1;
+    cin >> n;
+    char s[n];
+    FOR(i, n) {
+        cin >> temp;
+        s[i] = temp;
+    }
+    if (s[0] == '<') {
+        cout << 1 << endl;
+        return;
+    }
+    bool left = false;
+    bool right = false;
+    while (i != n - 1 or i == 0) {
+        if (s[i] == '<') {
+            left = true;
+            if (right == true) {
+                cout << -1 << endl;
+                return;
+            }
+            i = i - 1;
+            right = false;
+        } else if (s[i] == '>') {
+            right = true;
+            left = false;
+            i = i + 1;
+        } else {
+        ismark:
+            if (i + 1 != n - 1) {
+                if (s[i] == '<') {
+                    cout << -1 << endl;
+                    return;
+                } else if (s[i] == '*') {
+                    i++;
+                    goto ismark;
+                }
+            }
+        }
+    }
 }
 
 int main() {
