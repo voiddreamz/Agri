@@ -135,11 +135,12 @@ const int N = 1e9;
 void solve() {
     using namespace std;
     int i = 0, temp = 0; // i for the FOR and temp for temp.
-    
 }
 
 int main() {
     using namespace std;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
     int n;
     cin >> n;
     while (n > 0) {

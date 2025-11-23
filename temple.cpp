@@ -139,6 +139,8 @@ void solve() {
 
 int main() {
     using namespace std;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
     int n;
     cin >> n;
     while (n > 0) {
