@@ -135,6 +135,59 @@ const int N = 1e9;
 void solve() {
     using namespace std;
     int i = 0, temp = 0; // i for the FOR and temp for temp.
+    int n;
+    cin >> n;
+    vector<vector<LL>> a(3, vector<LL>(n, 0));
+    if (n == 1) {
+        cout << "1\n";
+        return;
+    }
+    if (n == 2) {
+        cout << "9\n";
+        return;
+    }
+    if (n == 3) {
+        cout << "29\n";
+        return;
+    }
+    FOR(i, 3) {
+        FOR(temp, n) {
+            LL row_index = (n - 3) + i;
+            a[i][temp] = row_index * n + temp + 1;
+        }
+    }
+    vector<vector<LL>> dp(3, vector<LL>(n, 0));
+    FOR(i, 3) {
+        FOR(temp, n) {
+            dp[i][temp] = a[i][temp];
+            if (i == 1) {
+                dp[i][temp] += a[i - 1][temp];
+                dp[i][temp] += a[i + 1][temp];
+            } else if (i == 0) {
+                dp[i][temp] += a[i + 1][temp];
+            } else if (i == 2) {
+                dp[i][temp] += a[i - 1][temp];
+            }
+
+            if (temp == 0) {
+                dp[i][temp] += a[i][temp + 1];
+            } else if (temp == n - 1) {
+                dp[i][temp] += a[i][temp - 1];
+            } else {
+                dp[i][temp] += a[i][temp + 1];
+                dp[i][temp] += a[i][temp - 1];
+            }
+        }
+    }
+    int res = 0;
+    FOR(i, 3) {
+        FOR(temp, n) {
+            if (dp[i][temp] > res) {
+                res = dp[i][temp];
+            }
+        }
+    }
+    cout << res << "\n";
 }
 
 int main() {
