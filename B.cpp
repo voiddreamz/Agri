@@ -135,6 +135,42 @@ const int N = 1e9;
 void solve() {
     using namespace std;
     int i = 0, temp = 0; // i for the FOR and temp for temp.
+    int n;
+    cin >> n;
+    VEC(I) a;
+    unordered_map<int, int> freq;
+    FOR(i, n * 2) {
+        cin >> temp;
+        freq[temp]++;
+        a.push_back(temp);
+    }
+    int ans = 0;
+    int even_count = 0;
+    for (auto &e: freq) {
+        if (e.second == 0) {
+            continue;
+        }
+        if (e.second % 2 == 1) {
+            ans += 1;
+        } else {
+            even_count++;
+        }
+    }
+    if (even_count == 1) {
+        if (n % 2 == 1) {
+            ans += 2;
+        }
+    }
+    if (even_count % 2 == 0) {
+        if (n % 2 == 0) {
+            ans += 4;
+        } else {
+            ans += even_count * 2;
+        }
+    } else {
+    }
+
+    cout << ans << "\n";
 }
 
 int main() {

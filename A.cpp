@@ -135,6 +135,14 @@ const int N = 1e9;
 void solve() {
     using namespace std;
     int i = 0, temp = 0; // i for the FOR and temp for temp.
+    int n, y, r;
+    cin >> n >> y >> r;
+    int res = 0;
+    res += y / 2 + r;
+    if (res >= n) {
+        res = n;
+    }
+    cout << res << "\n";
 }
 
 int main() {

@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Agri
         #        A.cpp
-        #        B.cpp
-        C.cpp
+        B.cpp
+        #        C.cpp
         #        D.cpp
         #        temple.cpp
 )
